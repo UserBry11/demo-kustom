@@ -55,7 +55,7 @@ ROOT_URLCONF = 'custom_user.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'custom_user', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

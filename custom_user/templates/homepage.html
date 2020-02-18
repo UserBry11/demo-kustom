@@ -1,0 +1,20 @@
+<h1>MICE</h1>
+<h2>
+    {% if user.is_authenticated %}
+        Logged in as 
+    
+        {% if request.user.is_staff %}
+            ADMIN: 
+        {% endif %}
+        {{ request.user }}
+        <p>
+            <a href="logout/" ><button>Logout Here</button></a>
+        </p>
+    
+    {% else %}
+        Hello New Guy! [Guest User]
+        <a href="login/" ><button>Login Here</button></a>
+            or
+        <a href="signup/" ><button>Signup Here</button></a>
+    {% endif %}
+</h2>
