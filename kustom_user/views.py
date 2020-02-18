@@ -36,29 +36,25 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("homepage"))
 
 
-# def signup_view(request):
-#     html = "signup.html"
+def signup_view(request):
+    html = "signup.html"
 
-#     if request.method == "POST":
+    if request.method == "POST":
 
-#         form = SignupForm(request.POST)
+        form = SignupForm(request.POST)
 
-#         if form.is_valid():
+        if form.is_valid():
 
-#             data = form.cleaned_data
-#             user = User.objects.create_user(
-#                 data['username'],
-#                 data['email']
-#             )
+            data = form.cleaned_data
+            user = MyKustomUser.objects.create_user(
+                data['username'],
+                data['email']
+            )
 
-#             login(request, user)
-#             MyKustomUser.objects.create(
-#                 name=data['username'],
-#                 user=user
-#             )
+            login(request, user)
 
-#             return HttpResponseRedirect(reverse("homepage"))
+            return HttpResponseRedirect(reverse("homepage"))
 
-#     form = SignupForm()
+    form = SignupForm()
 
-#     return render(request, html, {"form": form})
+    return render(request, html, {"form": form})
