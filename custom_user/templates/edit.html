@@ -1,0 +1,10 @@
+
+<html style="background-color: rgb(116, 162, 248);">
+    <h3>EDIT TICKETS HERE!</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        Join Today! 
+        <input type="submit" value="Submit">
+    </form>
+</html>

@@ -1,7 +1,23 @@
-<h1>Login Form</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<h1 class="shadow p-3 mb-5 bg-light rounded">Login Form</h1>
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
+
+    <p class="input-group mb-3">
+        <div class="input-group-prepend shadow p-3 mb-5 bg-white rounded">
+            <span class="input-group-text" id="basic-addon1">Username:</span>
+            <input type="text" name="username" maxlength="30" required id="id_username" class="form-control" aria-describedby="basic-addon1" placeholder="maxlength of chars is 30">
+        </div>
+    </p>
+    <p class="input-group mb-3">
+        <div class="input-group-prepend shadow p-3 mb-5 bg-white rounded">
+            <span class="input-group-text">Password:</span>
+            <input type="text" name="password" maxlength="30" required id="id_password" class="form-control" placeholder="max length of chars is 30">
+        </div>
+    </p>
+    <input type="submit" value="Submit" class="btn btn-primary">
 </form>
+
+

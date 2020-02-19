@@ -1,20 +1,51 @@
-<h1>MICE</h1>
-<h2>
-    {% if user.is_authenticated %}
-        Logged in as 
-    
-        {% if request.user.is_staff %}
-            ADMIN: 
-        {% endif %}
-        {{ request.user }}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: rgb(229, 226, 226);
+            }
+        </style>
+    </head>
+    <body class="text-center">
+        <h1 class="card-header">TICKETS HERE</h1>
+        <h2 class="card-body">
+            {% if user.is_authenticated %}
+                Logged in as 
+            
+                {% if request.user.is_staff %}
+                    ADMIN: 
+                {% endif %}
+                {{ request.user }}
+                <p>
+                    <a href="logout/" ><button class="btn btn-secondary btn-sm">Logout Here</button></a>
+                </p>
+        
+                <a href="signup/" ><button type="button" class="btn btn-info btn-sm">Register New User Here</button></a>
+        
+            
+            {% else %}
+                Hello [Anon User]
+                <a href="login/" ><button class="btn btn-success">Login Here</button></a>
+        
+            {% endif %}
+        </h2>
+
+        <a href="/ticket/">Create Ticket</a>
+
+
+        {% for each in items %}
         <p>
-            <a href="logout/" ><button>Logout Here</button></a>
+            <div>Title: {{each.title}}</div>
+            <div>Time / Date filed: {{each.date_filed}}</div>
+            <div>Description: {{each.description}}</div>
+            <div>User who filed: {{each.user_who_filed}}</div>
+            <div>Ticket Status: {{each.status_of_ticket}}</div>
+            <div>User Assigned To: {{each.user_assigned_to}}</div>
+            <div>User who Completed: {{each.user_who_completed}}</div>
+            <a href="/ticket/{{each.id}}"><button>Edit Ticket</button></a>
         </p>
-    
-    {% else %}
-        Hello New Guy! [Guest User]
-        <a href="login/" ><button>Login Here</button></a>
-            or
-        <a href="signup/" ><button>Signup Here</button></a>
-    {% endif %}
-</h2>
+        {% endfor %}
+    </body>
+</html>
