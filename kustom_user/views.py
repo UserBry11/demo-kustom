@@ -46,12 +46,13 @@ def signup_view(request):
         if form.is_valid():
 
             data = form.cleaned_data
-            user = MyKustomUser.objects.create_user(
-                data['username'],
-                data['email']
+            MyKustomUser.objects.create_user(
+                username=data['username'],
+                email=data['email'],
+                password=data['password']
             )
 
-            login(request, user)
+#             login(request, user)
 
             return HttpResponseRedirect(reverse("homepage"))
 
