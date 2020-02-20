@@ -25,9 +25,3 @@ class EditForm(forms.ModelForm):
     class Meta:
         model = Ticket
         fields = ['title', 'date_filed', 'description', 'user_who_filed', 'status_of_ticket', 'user_assigned_to', 'user_who_completed']
-
-
-class SignupForm(forms.ModelForm):
-    class Meta:
-        model = MyKustomUser
-        fields = ('username', 'email', 'password')

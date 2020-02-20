@@ -18,9 +18,9 @@ class Ticket(models.Model):
         ('Invalid', 'Invalid')
     ]
 
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30, default="Default text here")
     date_filed = models.DateTimeField(default=timezone.now)
-    description = models.TextField()
+    description = models.TextField(default="Default body here")
     user_who_filed = models.ForeignKey(MyKustomUser,
                                        on_delete=models.CASCADE,
                                        null=True,
@@ -39,38 +39,3 @@ class Ticket(models.Model):
                                            null=True,
                                            blank=True,
                                            related_name="user_who_completed")
-
-
-
-"""
-Title
-Time/Date filed
-Description
-Name of user who filed ticket
-Status of ticket (New / In Progress / Done / Invalid)
-Name of user assigned to ticket
-Name of user who completed ticket
-
-
-When a ticket is created, it should have the following settings:
-
-Status: New
-User Assigned: None
-User who Completed: None
-User who filed: Person who's logged in
-When a ticket is assigned, these change as follows:
-
-Status: In Progress
-User Assigned: person the ticket now belongs to
-User who Completed: None
-When a ticket is Done, these change as follows:
-
-Status: Done
-User Assigned: None
-User who Completed: person who the ticket used to belong to
-When a ticket is marked as Invalid, these change as follows:
-
- Status: Invalid
-User Assigned: None
-User who Completed: None
-"""

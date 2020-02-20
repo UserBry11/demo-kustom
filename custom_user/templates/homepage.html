@@ -31,7 +31,7 @@
                 <a href="/create_ticket/"><button type="button" class="btn btn-warning">Create Ticket</button></a>
             </p>
             
-            <h4>All Tickets Sorted by Status</h4>
+            <h4>All Tickets Sorted by Status<br>('New', 'Invalid', 'In-Progress', 'Done')</h4>
             <a href="/user_tickets/">
                 <button class="btn btn-dark">
                     Click here for User filtered Tickets
@@ -39,6 +39,7 @@
             </a>
             {% for each in items %}
             <p>
+                <div>Status: {{each.status_of_ticket}}</div>
                 <div>Title: {{each.title}}</div>
                 <div>Time / Date filed: {{each.date_filed}}</div>
                 <a href="/ticket/{{each.id}}"><button class="btn btn-info">More details</button></a>
