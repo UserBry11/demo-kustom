@@ -1,10 +1,27 @@
 
 <html style="background-color: rgb(116, 162, 248);">
-    <h3>EDIT TICKETS HERE!</h3>
+<a href="/">Back to Homepage</a>
+    <h3>EDIT TICKETS HERE</h3>
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p}}
-        Join Today! 
+        <p>
+            Title: {{form.title}}
+        </p>
+        <p>
+            Date filed: {{form.date_filed}}
+        </p>
+        <p>
+            Description: {{form.description}}
+        </p>
+        <p>
+            Status of Ticket: {{form.status_of_ticket}}
+        </p>
+        <p>
+            User Assigned to: {{form.user_assigned_to}}
+        </p>
+        <p>
+            User who Completed: {{form.user_who_completed}}
+        </p>
         <input type="submit" value="Submit">
     </form>
 </html>

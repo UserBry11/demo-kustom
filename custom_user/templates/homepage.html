@@ -19,33 +19,31 @@
                 {% endif %}
                 {{ request.user }}
                 <p>
-                    <a href="logout/" ><button class="btn btn-secondary btn-sm">Logout Here</button></a>
+                    <a href="logout/" ><button class="btn btn-danger btn-sm">Logout Here</button></a>
                 </p>
-        
-                <a href="signup/" ><button type="button" class="btn btn-info btn-sm">Register New User Here</button></a>
-        
-            
             {% else %}
                 Hello [Anon User]
                 <a href="login/" ><button class="btn btn-success">Login Here</button></a>
-        
             {% endif %}
         </h2>
-
-        <a href="/ticket/">Create Ticket</a>
-
-
-        {% for each in items %}
-        <p>
-            <div>Title: {{each.title}}</div>
-            <div>Time / Date filed: {{each.date_filed}}</div>
-            <div>Description: {{each.description}}</div>
-            <div>User who filed: {{each.user_who_filed}}</div>
-            <div>Ticket Status: {{each.status_of_ticket}}</div>
-            <div>User Assigned To: {{each.user_assigned_to}}</div>
-            <div>User who Completed: {{each.user_who_completed}}</div>
-            <a href="/ticket/{{each.id}}"><button>Edit Ticket</button></a>
-        </p>
-        {% endfor %}
+        {% if user.is_authenticated %}
+            <p>
+                <a href="/create_ticket/"><button type="button" class="btn btn-warning">Create Ticket</button></a>
+            </p>
+            
+            <h4>All Tickets Sorted by Status</h4>
+            <a href="/user_tickets/">
+                <button class="btn btn-dark">
+                    Click here for User filtered Tickets
+                </button>
+            </a>
+            {% for each in items %}
+            <p>
+                <div>Title: {{each.title}}</div>
+                <div>Time / Date filed: {{each.date_filed}}</div>
+                <a href="/ticket/{{each.id}}"><button class="btn btn-info">More details</button></a>
+            </p>
+            {% endfor %}
+        {% endif %}
     </body>
 </html>

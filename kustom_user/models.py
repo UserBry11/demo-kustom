@@ -23,14 +23,21 @@ class Ticket(models.Model):
     description = models.TextField()
     user_who_filed = models.ForeignKey(MyKustomUser,
                                        on_delete=models.CASCADE,
+                                       null=True,
+                                       blank=True,
                                        related_name="user_who_filed")
     status_of_ticket = models.CharField(max_length=11,
+                                        blank=True,
                                         choices=Status_Choices)
     user_assigned_to = models.ForeignKey(MyKustomUser,
                                          on_delete=models.CASCADE,
+                                         null=True,
+                                         blank=True,
                                          related_name="user_assigned_to")
     user_who_completed = models.ForeignKey(MyKustomUser,
                                            on_delete=models.CASCADE,
+                                           null=True,
+                                           blank=True,
                                            related_name="user_who_completed")
 
 

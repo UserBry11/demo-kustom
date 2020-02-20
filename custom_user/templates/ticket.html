@@ -1,8 +1,17 @@
 <html style="background-color: rgb(185, 146, 101);">
-    <h1>THIS IS TICKET PAGE</h1>
+    <a href="/">Return to Homepage</a>
+    <h1>THIS IS CREATE A TICKET PAGE</h1>
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p}}
+        <p>
+            Title: {{form.title}}
+        </p>
+        <p>
+            Date filed: {{form.date_filed}}
+        </p>
+        <p>
+            Description: {{form.description}}
+        </p>
         <input type="submit" value="Submit">
     </form>
 </html>
